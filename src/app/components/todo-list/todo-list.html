@@ -1,0 +1,22 @@
+<mat-selection-list #shoes>
+  <mat-list-item class="todo-list-header">
+    <span matListItemTitle>Todo List</span>
+    <span class="add-button">
+      <button matMiniFab (click)="addTodo()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </span>
+  </mat-list-item>
+  @for (item of list(); track item) {
+  <div class="d-flex list-item">
+    <mat-list-option [class]="item.status.toLocaleLowerCase()" [selected]="item.status === 'Done'"
+      togglePosition="before" (click)="updateStatus(item)">
+      {{item.name}}
+
+    </mat-list-option>
+    <button mat-icon-button (click)="deleteTodo(item)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  }
+</mat-selection-list>

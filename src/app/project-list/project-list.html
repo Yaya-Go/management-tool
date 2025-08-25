@@ -1,0 +1,29 @@
+<div class="project-list-container">
+  <div class="project-list-header">
+    <h2>Projects</h2>
+    <mat-form-field class="search-field" appearance="outline">
+      <mat-label>Search projects</mat-label>
+      <input matInput type="text" [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($event)"
+        placeholder="Search...">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+  <mat-nav-list>
+    @for (project of filteredProjects(); track project.id) {
+    <mat-list-item class="project-item" [routerLink]="['/project', project.id]" routerLinkActive="active-item"
+      [routerLinkActiveOptions]="{exact: true}">
+      <mat-icon [class]="'status-dot ' + project.status.toLowerCase()" matListItemIcon>
+        circle
+      </mat-icon>
+      <span matListItemTitle>{{ project.name }}</span>
+    </mat-list-item>
+    }
+    @empty {
+    <div class="empty-state">
+      <mat-icon>folder_off</mat-icon>
+      <p>No projects found</p>
+      <button mat-stroked-button color="primary">Create Project</button>
+    </div>
+    }
+  </mat-nav-list>
+</div>

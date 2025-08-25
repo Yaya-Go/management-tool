@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>Create New Project</h2>
+<form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <mat-form-field appearance="outline" class="full-width project-name-field">
+      <mat-label>Project Name</mat-label>
+      <input matInput formControlName="name" required />
+      @if (projectForm.get('name')?.hasError('required') &&
+      projectForm.get('name')?.touched) {
+      <mat-error>Name is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status" required>
+        <mat-option value="Draft">Draft</mat-option>
+        <mat-option value="To Do">To Do</mat-option>
+        <mat-option value="In Process">In Process</mat-option>
+        <mat-option value="Ready for Prod">Ready for Prod</mat-option>
+        <mat-option value="In Prod">In Prod</mat-option>
+        <mat-option value="Done">Done</mat-option>
+      </mat-select>
+      @if (projectForm.get('status')?.hasError('required') &&
+      projectForm.get('status')?.touched) {
+      <mat-error>Status is required</mat-error>
+      }
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" [mat-dialog-close]>Cancel</button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="!projectForm.valid">
+      Create Project
+    </button>
+  </mat-dialog-actions>
+</form>

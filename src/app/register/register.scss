@@ -1,0 +1,101 @@
+.register-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+  padding: 1rem;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 450px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+
+  mat-card-header {
+    margin-bottom: 2rem;
+    text-align: center;
+    display: block;
+
+    mat-card-title {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #185a9d;
+      font-weight: 500;
+    }
+
+    mat-card-subtitle {
+      font-size: 1.1rem;
+      color: #666;
+    }
+  }
+
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  button[type="submit"] {
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    border-radius: 25px;
+  }
+}
+
+.divider {
+  margin: 2rem 0;
+  text-align: center;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background-color: #ddd;
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+  }
+
+  span {
+    background-color: white;
+    padding: 0 1rem;
+    color: #666;
+    font-size: 0.9rem;
+  }
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #666;
+
+  a {
+    color: #185a9d;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

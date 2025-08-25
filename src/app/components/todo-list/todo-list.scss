@@ -1,0 +1,31 @@
+.todo-list-header {
+  ::ng-deep {
+    .mdc-list-item__content {
+      display: flex;
+      align-self: center;
+    }
+
+    .mdc-list-item__secondary-text {
+      margin-left: auto;
+    }
+
+    .mat-mdc-mini-fab {
+      box-shadow: none;
+    }
+  }
+}
+
+mat-list-option {
+  &.done {
+    text-decoration: line-through;
+  }
+}
+
+.list-item {
+  padding-right: 1rem;
+
+  button {
+    margin: auto;
+    color: #ba005c
+  }
+}

@@ -1,0 +1,14 @@
+@if (!loading()) {
+<mat-sidenav-container>
+  <mat-sidenav [mode]="mode" [opened]="sidenavOpen()">
+    <app-project-list></app-project-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-project-detail></app-project-detail>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+} @else {
+<div class="loading">
+  <mat-spinner></mat-spinner>
+</div>
+}

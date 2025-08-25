@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Create New Todo Item</h2>
+<form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Todo Item</mat-label>
+      <input matInput formControlName="name" required />
+      @if (todoForm.get('name')?.hasError('required') &&
+      todoForm.get('name')?.touched) {
+      <mat-error>Item name is required</mat-error>
+      }
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" [mat-dialog-close]>Cancel</button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="!todoForm.valid">
+      Add Item
+    </button>
+  </mat-dialog-actions>
+</form>

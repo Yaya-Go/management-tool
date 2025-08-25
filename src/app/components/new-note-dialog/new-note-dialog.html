@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Add New Note</h2>
+<form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" required />
+      @if (noteForm.get('title')?.hasError('required') &&
+      noteForm.get('title')?.touched) {
+      <mat-error>Note title is required</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- <mat-form-field appearance="outline" class="full-width"> -->
+    <!-- <mat-label>Description</mat-label> -->
+    <ngx-editor [editor]="editor" formControlName="text">
+      <ngx-editor-menu [editor]="editor">
+      </ngx-editor-menu>
+    </ngx-editor>
+    <!-- </mat-form-field> -->
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" [mat-dialog-close]>Cancel</button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="!noteForm.valid">
+      Add Note
+    </button>
+  </mat-dialog-actions>
+</form>

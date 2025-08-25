@@ -1,0 +1,117 @@
+:host {
+  overflow: auto;
+}
+
+.table-header {
+  margin-bottom: 1rem;
+}
+
+.table-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.filters-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 25rem;
+}
+
+.status-filter {
+  height: 3.5rem;
+
+  .current-filter {
+    margin-left: 0.5rem;
+    color: var(--mat-primary-color);
+  }
+}
+
+button[mat-flat-button] {
+  height: 3.5rem;
+  padding: 0 1.5rem;
+
+  mat-icon {
+    margin-right: 0.5rem;
+  }
+}
+
+.table-container {
+  border-radius: 0.5rem;
+
+  .clickable-row {
+    cursor: pointer;
+  }
+
+  overflow: hidden;
+  position: relative;
+}
+
+.table-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-mdc-table {
+  background: white;
+}
+
+.mat-mdc-row:hover {
+  background: whitesmoke;
+}
+
+.status-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  display: inline-block;
+  min-width: 5rem;
+  text-align: center;
+}
+
+.mat-mdc-form-field {
+  font-size: 0.875rem;
+  width: 100%;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+table.loading {
+  opacity: 0.5;
+  pointer-events: none;
+}

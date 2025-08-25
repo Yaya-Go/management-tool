@@ -1,0 +1,19 @@
+@if (project(); as p;) {
+<div class="project-summary">
+  <app-project-card></app-project-card>
+</div>
+<div class="project-info">
+  <div class="project-todo">
+    <app-todo-list></app-todo-list>
+  </div>
+  <div class="project-note">
+    <app-project-note></app-project-note>
+  </div>
+</div>
+}
+@else {
+<div class="not-found">
+  <p>Project not found.</p>
+  <button mat-stroked-button (click)="goBack()">Back</button>
+</div>
+}

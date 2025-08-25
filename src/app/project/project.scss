@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+mat-sidenav-container {
+  width: 100%;
+}
+
+mat-sidenav {
+  width: 14rem;
+}
+
+mat-sidenav-content {
+  padding: 1.25rem;
+}
+
+.loading {
+  height: 40vh;
+  width: 100%;
+  display: flex;
+
+  mat-spinner {
+    margin: auto;
+  }
+}

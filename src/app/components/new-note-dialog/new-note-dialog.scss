@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  padding: 1rem;
+  min-width: 25rem;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+mat-dialog-actions {
+  padding: 1rem 0 0;
+  gap: 0.5rem;
+}
+
+::ng-deep {
+  .NgxEditor {
+    min-height: 25rem;
+  }
+}

@@ -1,0 +1,57 @@
+@if (project(); as p) {
+<mat-card class="project-card">
+  <mat-card-header>
+    <div mat-card-avatar class="status-avatar" [class]="p.status.toLowerCase()"></div>
+    <mat-card-title>{{ p.name }}</mat-card-title>
+    <div class="project-delete">
+      <button matFab (click)="deleteProject()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="meta-row">
+      <div class="meta-item">
+        <div class="meta-label">Status</div>
+        <div class="meta-value">
+          <button matButton [class]="p.status.toLowerCase()" [matMenuTriggerFor]="statusMenu">{{ p.status }}</button>
+          <mat-menu #statusMenu="matMenu">
+            <button mat-menu-item (click)="updateStatus('Draft')">
+              <span>Draft</span>
+            </button>
+            <button mat-menu-item (click)="updateStatus('To Do')">
+              <span>To Do</span>
+            </button>
+            <button mat-menu-item (click)="updateStatus('In Process')">
+              <span>In Process</span>
+            </button>
+            <button mat-menu-item (click)="updateStatus('Ready for Prod')">
+              <span>Ready for Prod</span>
+            </button>
+            <button mat-menu-item (click)="updateStatus('In Prod')">
+              <span>In Prod</span>
+            </button>
+            <button mat-menu-item (click)="updateStatus('Done')">
+              <span>Done</span>
+            </button>
+          </mat-menu>
+
+        </div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Created</div>
+        <div class="meta-value">{{ p.created | date:'short' }}</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Last modified</div>
+        <div class="meta-value">{{ p.lastModified | date:'short' }}</div>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <app-chip-list></app-chip-list>
+  </mat-card-actions>
+</mat-card>
+}

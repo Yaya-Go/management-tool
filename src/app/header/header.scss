@@ -1,0 +1,63 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.app-title {
+  margin-left: 0.5rem;
+  font-size: 1.2em;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.menu-button {
+  margin-right: 0.5rem;
+}
+
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, .2);
+  color: var(--mat-sys-primary);
+  background: var(--mat-sys-primary-container);
+}
+
+.auth-button {
+  margin-left: 0.5rem;
+  border-radius: 1.25rem;
+  color: var(--mat-sys-primary);
+
+  mat-icon {
+    margin-right: 0.25rem;
+  }
+
+  span {
+    margin-left: 0.25rem;
+  }
+}
+
+.user-menu-button {
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  border-radius: 1.25rem;
+  color: var(--mat-sys-primary) !important;
+
+  mat-icon {
+    margin-right: 4px;
+  }
+
+  .username {
+    margin: 0 4px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

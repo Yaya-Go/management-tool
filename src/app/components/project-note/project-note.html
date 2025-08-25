@@ -1,0 +1,32 @@
+<div class="search-input">
+  <mat-form-field appearance="outline">
+    <mat-label>Search</mat-label>
+    <input matInput type="text" [ngModel]="searchText()" (ngModelChange)="searchText.set($event)"
+      placeholder="Search...">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</div>
+<mat-selection-list>
+  <mat-list-item class="note-header">
+    <span matListItemTitle>Notes</span>
+    <span class="add-button">
+      <button matMiniFab (click)="addNote()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </span>
+  </mat-list-item>
+  @for (item of filteredNotes(); track item) {
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ item.title }}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <p [innerHTML]="item.text | safeHtml"></p>
+      <mat-action-row>
+        <button matButton (click)="editNote(item)">Edit</button>
+        <button matButton class="note-delete" (click)="deleteNote(item)">Delete</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+  }
+</mat-selection-list>
