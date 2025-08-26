@@ -1,6 +1,7 @@
 :host {
   display: flex;
   flex-direction: column;
+  overflow: auto;
 }
 
 main {
@@ -8,5 +9,5 @@ main {
   padding: 1.25rem;
   display: block;
   max-height: calc(100vh - 8rem);
-  overflow: hidden;
+  height: calc(100vh - 8rem);
 }
