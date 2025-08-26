@@ -1,4 +1,11 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  effect,
+  inject,
+  model,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -12,11 +19,14 @@ import {
 } from '@angular/material/dialog';
 import { NewProjectDialog } from '../new-project-dialog/new-project-dialog';
 import { CommonModule } from '@angular/common';
-import { NgxEditorComponent, NgxEditorMenuComponent, Editor } from 'ngx-editor';
+import {
+  NgxEditorComponent,
+  NgxEditorMenuComponent,
+  Editor,
+  toHTML,
+} from 'ngx-editor';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { INote } from '../../services/note.service';
 
 @Component({
   selector: 'app-new-note-dialog',
@@ -35,15 +45,17 @@ import { INote } from '../../services/note.service';
 export class NewNoteDialog implements OnInit, OnDestroy {
   noteForm: FormGroup;
   editor: Editor;
-  note = inject<INote>(MAT_DIALOG_DATA);
+  data = inject(MAT_DIALOG_DATA);
 
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<NewProjectDialog>,
   ) {
-    this.noteForm = this.fb.group({
-      title: [this.note.title, Validators.required],
-      text: [this.note.text],
+    effect(() => {
+      this.noteForm = this.fb.group({
+        title: [this.data.note.title, Validators.required],
+        text: [this.data.note.text],
+      });
     });
   }
 
