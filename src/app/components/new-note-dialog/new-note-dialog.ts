@@ -4,7 +4,6 @@ import {
   FormBuilder,
   Validators,
   ReactiveFormsModule,
-  FormsModule,
 } from '@angular/forms';
 import {
   MatDialogRef,
@@ -13,12 +12,7 @@ import {
 } from '@angular/material/dialog';
 import { NewProjectDialog } from '../new-project-dialog/new-project-dialog';
 import { CommonModule } from '@angular/common';
-import {
-  NgxEditorComponent,
-  NgxEditorMenuComponent,
-  Editor,
-  Toolbar,
-} from 'ngx-editor';
+import { NgxEditorComponent, NgxEditorMenuComponent, Editor } from 'ngx-editor';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';

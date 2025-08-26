@@ -7,18 +7,10 @@
   },
   "hosting": {
     "source": ".",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "frameworksBackend": {
       "region": "us-east1"
     }
-  },
-  "functions": {
-    "source": "dist/management-tool/server",
-    "runtime": "nodejs22"
   },
   "emulators": {
     "auth": {

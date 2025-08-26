@@ -2,9 +2,9 @@ import { Component, computed, effect, signal } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { INote, NoteService } from '../../services/note.service';
-import { IProject, ProjectService } from '../../services/project.service';
+import { ProjectService } from '../../services/project.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { NewNoteDialog } from '../new-note-dialog/new-note-dialog';
@@ -125,11 +125,7 @@ export class ProjectNote {
   async deleteNote(note: INote) {
     if (!note.id) return;
 
-    if (
-      confirm(
-        `Are you sure you want to delete the note "${note.title}"? This action cannot be undone.`,
-      )
-    ) {
+    if (confirm(`Are you sure you want to delete the note "${note.title}"?`)) {
       try {
         await this.noteService.deleteNote(note.id);
       } catch (error) {

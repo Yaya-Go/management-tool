@@ -4,10 +4,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from './services/auth.service';
 import { ProjectService } from './services/project.service';
 import { Header } from './header/header';
+import { Error } from './components/error/error';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header],
+  imports: [RouterOutlet, Header, Error],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -24,13 +25,7 @@ export class App {
 
     effect(() => {
       if (this.authService.user()) {
-        this.projectService
-          .fetchProjects(this.authService.user()?.uid)
-          .catch((error) => {
-            this.snackBar.open('Error loading projects', 'Close', {
-              duration: 5000,
-            });
-          });
+        this.projectService.fetchProjects(this.authService.user()?.uid);
       }
     });
   }

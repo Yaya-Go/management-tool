@@ -5,7 +5,6 @@ import {
   computed,
   effect,
   signal,
-  Signal,
 } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -56,7 +55,6 @@ export class Home implements OnInit {
 
   // Create local signals that mirror the service signals
   loading = signal<boolean>(false);
-  error = signal<string | null>(null);
   private statusFilter = signal<string>('');
 
   currentStatusFilter = computed(() => this.statusFilter());
@@ -70,17 +68,12 @@ export class Home implements OnInit {
     // Set up effect for project data
     effect(() => {
       const projects = this.projectService.projects();
-      console.log('Projects updated:', projects);
       this.dataSource.data = projects;
     });
 
     // Set up effects for loading and error states
     effect(() => {
       this.loading.set(this.projectService.loading());
-    });
-
-    effect(() => {
-      this.error.set(this.projectService.error());
     });
   }
 
