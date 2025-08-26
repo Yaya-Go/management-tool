@@ -65,11 +65,12 @@ export class Home implements OnInit {
     private projectService: ProjectService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
-    private authService: AuthService
+    private authService: AuthService,
   ) {
     // Set up effect for project data
     effect(() => {
       const projects = this.projectService.projects();
+      console.log('Projects updated:', projects);
       this.dataSource.data = projects;
     });
 
