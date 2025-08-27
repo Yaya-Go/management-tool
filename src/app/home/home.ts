@@ -1,10 +1,10 @@
 import {
   Component,
   ViewChild,
-  OnInit,
   computed,
   effect,
   signal,
+  AfterViewInit,
 } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -46,7 +46,7 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home implements OnInit {
+export class Home implements AfterViewInit {
   displayedColumns: string[] = ['name', 'status', 'created', 'lastModified'];
   dataSource = new MatTableDataSource<IProject>([]);
 
@@ -58,6 +58,11 @@ export class Home implements OnInit {
   private statusFilter = signal<string>('');
 
   currentStatusFilter = computed(() => this.statusFilter());
+
+  private searchTerm = signal<{ name: string; status: string }>({
+    name: '',
+    status: '',
+  });
 
   constructor(
     private projectService: ProjectService,
@@ -77,21 +82,35 @@ export class Home implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     // Initialize paginator and sort
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 
     // Custom filtering for project status
     this.dataSource.filterPredicate = (data: IProject, filter: string) => {
-      if (filter === 'all') return true;
-      return data.status.toLowerCase().includes(filter.toLowerCase());
+      const searchValue = JSON.parse(filter);
+      if (!searchValue.name && !searchValue.status) {
+        return true;
+      }
+
+      const filterName = searchValue.name;
+      const filterStatus = searchValue.status;
+
+      return (
+        data.name.toLowerCase().includes(filterName) &&
+        (filterStatus === '' || data.status.toLowerCase() === filterStatus)
+      );
     };
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.searchTerm.update((term) => ({
+      ...term,
+      name: filterValue.toLowerCase(),
+    }));
+    this.dataSource.filter = JSON.stringify(this.searchTerm());
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
@@ -101,7 +120,11 @@ export class Home implements OnInit {
   filterByStatus(status: string) {
     const filterValue = status === 'all' ? '' : status;
     this.statusFilter.set(filterValue);
-    this.dataSource.filter = filterValue.toLowerCase();
+    this.searchTerm.update((term) => ({
+      ...term,
+      status: filterValue.toLowerCase(),
+    }));
+    this.dataSource.filter = JSON.stringify(this.searchTerm());
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
