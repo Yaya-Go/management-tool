@@ -9,7 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { ChipList } from '../chip-list/chip-list';
+import { TagList } from '../tag-list/tag-list';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
@@ -29,7 +29,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatFormFieldModule,
     MatChipsModule,
     FormsModule,
-    ChipList,
+    TagList,
     MatMenuModule,
   ],
   templateUrl: './project-card.html',

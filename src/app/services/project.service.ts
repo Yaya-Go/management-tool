@@ -26,6 +26,7 @@ export interface IProject {
   id?: string;
   name: string;
   status: Status;
+  tags: string[];
   created: Date;
   lastModified: Date;
   userId: string;
@@ -63,6 +64,7 @@ export class ProjectService {
         return {
           id: doc.id,
           name: data['name'],
+          tags: data['tags'] || [],
           status: data['status'],
           created: (data['created'] as Timestamp).toDate(),
           lastModified: (data['lastModified'] as Timestamp).toDate(),
@@ -92,6 +94,7 @@ export class ProjectService {
       const projectData = {
         name: project.name,
         status: project.status,
+        tags: [],
         created: now,
         lastModified: now,
         userId: project.userId,
@@ -104,6 +107,7 @@ export class ProjectService {
         id: docRef.id,
         name: project.name,
         status: project.status,
+        tags: [],
         created: now.toDate(),
         lastModified: now.toDate(),
         userId: project.userId,
@@ -136,6 +140,7 @@ export class ProjectService {
         id: docSnap.id,
         name: data['name'],
         status: data['status'],
+        tags: data['tags'] || [],
         created: (data['created'] as Timestamp).toDate(),
         lastModified: (data['lastModified'] as Timestamp).toDate(),
         userId: data['userId'],

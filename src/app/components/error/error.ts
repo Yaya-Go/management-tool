@@ -1,5 +1,4 @@
 import { Component, computed } from '@angular/core';
-import { ChipService } from '../../services/chip.service';
 import { NoteService } from '../../services/note.service';
 import { ProjectService } from '../../services/project.service';
 import { TodoService } from '../../services/todo.service';
@@ -14,12 +13,10 @@ export class Error {
   readonly projectError = computed(() => this.projectService.error());
   readonly todoError = computed(() => this.todoService.error());
   readonly noteError = computed(() => this.noteService.error());
-  readonly chipError = computed(() => this.chipService.error());
 
   constructor(
     private projectService: ProjectService,
     private todoService: TodoService,
     private noteService: NoteService,
-    private chipService: ChipService,
   ) {}
 }

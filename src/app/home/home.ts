@@ -24,6 +24,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ProjectService, IProject } from '../services/project.service';
 import { NewProjectDialog } from '../components/new-project-dialog/new-project-dialog';
 import { AuthService } from '../services/auth.service';
+import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
   selector: 'app-home',
@@ -42,12 +43,13 @@ import { AuthService } from '../services/auth.service';
     MatProgressSpinnerModule,
     MatDialogModule,
     DatePipe,
+    MatChipsModule,
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class Home implements AfterViewInit {
-  displayedColumns: string[] = ['name', 'status', 'created', 'lastModified'];
+  displayedColumns: string[] = ['name', 'status', 'tags', 'lastModified'];
   dataSource = new MatTableDataSource<IProject>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -98,7 +100,8 @@ export class Home implements AfterViewInit {
       const filterStatus = searchValue.status;
 
       return (
-        data.name.toLowerCase().includes(filterName) &&
+        (data.name.toLowerCase().includes(filterName) ||
+          data.tags.includes(filterName)) &&
         (filterStatus === '' || data.status.toLowerCase() === filterStatus)
       );
     };

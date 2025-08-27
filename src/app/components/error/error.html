@@ -1,4 +1,4 @@
-@if (projectError() || noteError() || todoError() || chipError()) {
+@if (projectError() || noteError() || todoError()) {
 <div class="error-container">
   <div class="project-error">
     <p>Project error:</p>
@@ -11,10 +11,6 @@
   <div class="todo-error">
     <p>Todo error:</p>
     <p>{{ todoError() }}</p>
-  </div>
-  <div class="chip-error">
-    <p>Chip error:</p>
-    <p>{{ chipError() }}</p>
   </div>
 </div>
 }
